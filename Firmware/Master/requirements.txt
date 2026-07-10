@@ -1,0 +1,7 @@
+microdot==2.6.0
+logging==0.6.2
+pathlib==0.0.1
+threading==0.1.0
+network==0.1
+webrepl==0.1.0
+esp==0.2.0

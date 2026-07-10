@@ -1,0 +1,24 @@
+{
+    "Filesystem": {
+        "used_flash": "987136 kB",
+        "total_flash": "2097152 kB",
+        "pyh Flash": "4 MB",
+        "Auslastung": "47.1%",
+        "free_flash": "1110016 kB"
+    },
+    "CPU": {
+        "Frequenz": "160"
+    },
+    "RAM": {
+        "allocated": "81.50 KB",
+        "free": "45.88 KB",
+        "Auslastung": "64.0%",
+        "total": "127.38 KB"
+    },
+    "Temperatur": {
+        "internal": "58.9"
+    },
+    "GarbageCollector": {
+        "enabled": true
+    }
+}

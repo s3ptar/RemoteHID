@@ -1,0 +1,26 @@
+{
+    "Logging": {
+        "loglevel_file": "ERROR",
+        "loglevel_console": "DEBUG",
+        "filepath": "log/app.log",
+        "backup_count": 2,
+        "max_bytes": 5120,
+        "console_output": true,
+        "file_output": true
+    },
+    "WIFI": {
+        "force_ap": false,
+        "sta_default": {
+            "ssid": "smarthome24",
+            "password": "zdx1bmuJ7FQaI8owjhHkDABN3UyFTNP7tEaptdqTxAPkIQN98T6RsPPLqTN3gVF"
+        },
+        "sta_fallback": {
+            "ssid": "chilihotdog24",
+            "password": "bxJHckMMkGqEPfY3Jf3nZnAn5FtGYwKZSkzVvbzFHNbpUZfv79GXm8afDuNu"
+        },
+        "ap_mode": {
+            "ssid": "ESP32-Hotspot",
+            "password": "schluessel123"
+        }    
+    }
+}

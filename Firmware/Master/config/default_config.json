@@ -1,0 +1,26 @@
+{
+    "Logging": {
+        "loglevel_file": "INFO",
+        "loglevel_console": "DEBUG",
+        "filepath": "log/app.log",
+        "backup_count": 2,
+        "max_bytes": 51200,
+        "console_output": true,
+        "file_output": true
+    },
+    "WIFI": {
+        "force_ap": false,
+        "sta_default": {
+            "ssid": "MeinHauptWLAN",
+            "password": "super-sicheres-passwort"
+        },
+        "sta_fallback": {
+            "ssid": "MeinBackupWLAN",
+            "password": "ersatz-passwort"
+        },
+        "ap_mode": {
+            "ssid": "ESP32-Hotspot",
+            "password": "schluessel123"
+        }    
+    }
+}
