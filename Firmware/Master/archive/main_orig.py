@@ -11,7 +11,6 @@
                               Entwicklung zu beschleunigen.
                               E01 board umgestellt auf YF-ESP32-23
 #####################################################################"""
-from lib.logging import debug
 
 """#####################################################################
 # Includes
@@ -30,10 +29,10 @@ import time
 import asyncio
 import loghandler
 
-import usb.device
-from usb.device.cdc import CDCInterface
-
-
+import uos
+import time
+from machine import UART, Pin
+from machine import USBSerial
 """#####################################################################
 # Informations
 #####################################################################"""
@@ -53,7 +52,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.ERROR)
 
 # 1. Erstelle eine neue CDC-Schnittstelle
-cdc = CDCInterface(timeout=0)
+#cdc_port = CDC()
 
 """#####################################################################
 # local Variable
@@ -63,6 +62,7 @@ cdc = CDCInterface(timeout=0)
 # Constant
 #####################################################################"""
 
+
 """#####################################################################
 #! @fn           int main(){
 #  @ brief       start up function
@@ -70,45 +70,30 @@ cdc = CDCInterface(timeout=0)
 #  @ exception   none
 #  @ return      none
 #####################################################################"""
-
-
 async def main_loop():
     while True:
         await asyncio.sleep(30)
-        # logger.debug(utilities.get_device_telemetry())
+        #logger.debug(utilities.get_device_telemetry())
         logger.debug(utilities.get_device_status())
 
-async def read_cdc_uart():
-    while True:
-        if cdc.is_open():
-            # Auf eingehende Daten am nativen USB-Port prüfen
-            rx_bytes = cdc.read(-1)
-            if rx_bytes:
-                #rx_bytes = cdc_uart.readline()
-                # Log auf der UART-REPL ausgeben
-                logger.info(f"[UART REPL Log] Über nativen USB empfangen: {rx_bytes}")
 
-                # Daten/Antwort über nativen USB zurücksenden
-                cdc.write(b"USB-CDC OK: " + rx_bytes)
 # ==============================================================================
 # Main Task
 # ==============================================================================
 async def main():
-    # task1 = asyncio.create_task(web_server.start())
-    # await task1
+    #task1 = asyncio.create_task(web_server.start())
+    #await task1
 
     # Automatische Aktivierung nach Bootup
     logger.info("Warte 20 Sekunden vor automatischer Aktivierung der Sperre...")
     # await asyncio.sleep(20)
 
     await asyncio.gather(
-        # task_hid.evdev_loop(),
-        # web_server.start(),
-        read_cdc_uart()
-        #asyncio.sleep(30)
+        #task_hid.evdev_loop(),
+        #web_server.start(),
+        #hal.receive_from_transmitter()
+        asyncio.sleep(30)
     )
-
-
 
 """#####################################################################
 #! @fn           int main(){
@@ -119,12 +104,9 @@ async def main():
 #####################################################################"""
 if __name__ == "__main__":
     print("Starting LED ClockRing Application")
-
+    
     logger = loghandler.setup_logger()
     logger.info("Logger erfolgreich eingerichtet.")
-
-    # Native USB exklusiv nutzen
-    usb.device.get().init(cdc, builtin_driver=False)
 
     utilities.get_device_telemetry()
 
@@ -137,12 +119,10 @@ if __name__ == "__main__":
 
     logger.info("Main loop")
 
-    asyncio.run(main())
+
+    
 
 
 
 
-
-
-
-
+    
