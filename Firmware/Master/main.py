@@ -70,8 +70,6 @@ cdc = CDCInterface(timeout=0)
 #  @ exception   none
 #  @ return      none
 #####################################################################"""
-
-
 async def main_loop():
     while True:
         await asyncio.sleep(30)
@@ -90,6 +88,7 @@ async def read_cdc_uart():
 
                 # Daten/Antwort über nativen USB zurücksenden
                 cdc.write(b"USB-CDC OK: " + rx_bytes)
+
 # ==============================================================================
 # Main Task
 # ==============================================================================
@@ -98,7 +97,6 @@ async def main():
     # await task1
 
     # Automatische Aktivierung nach Bootup
-    logger.info("Warte 20 Sekunden vor automatischer Aktivierung der Sperre...")
     # await asyncio.sleep(20)
 
     await asyncio.gather(
